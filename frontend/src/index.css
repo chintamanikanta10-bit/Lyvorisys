@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    font-family: Inter, "Segoe UI", Roboto, sans-serif;
+  }
+
+  body {
+    @apply min-h-screen bg-slate-50 text-slate-900 antialiased;
+    background-image: radial-gradient(circle at top left, rgba(59, 130, 246, 0.09), transparent 30%), linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  }
+
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-3xl border border-slate-200/80 bg-white/90 shadow-[0_8px_30px_rgba(15,23,42,0.06)] backdrop-blur;
+  }
+
+  .soft-ring {
+    @apply ring-1 ring-slate-200/80 ring-offset-2 ring-offset-white;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.3s ease-out;
+}
