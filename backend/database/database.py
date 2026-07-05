@@ -6,8 +6,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Use SQLite by default for easy local testing without Postgres setup, but can be swapped easily.
-SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./attendance.db")
+# Use SQLite by default for local testing. On Vercel, Neon may be connected
+# with a custom prefix, so prefer NEON_URL when DATABASE_URL is still local.
+database_url = os.getenv("DATABASE_URL")
+neon_url = os.getenv("NEON_URL")
+
+if neon_url and (not database_url or database_url.startswith("sqlite")):
+    SQLALCHEMY_DATABASE_URL = neon_url
+else:
+    SQLALCHEMY_DATABASE_URL = database_url or "sqlite:///./attendance.db"
 
 if SQLALCHEMY_DATABASE_URL.startswith("sqlite"):
     engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
