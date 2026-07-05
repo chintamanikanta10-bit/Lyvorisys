@@ -181,6 +181,28 @@ def ensure_objection_columns():
 
 ensure_objection_columns()
 
+
+def create_default_admin():
+    db = next(get_db())
+    try:
+        if db.query(User).first():
+            return
+        admin = User(
+            username="admin",
+            email="admin@example.com",
+            hashed_password=get_password_hash("admin123"),
+            role="hr",
+            employee_id=None
+        )
+        db.add(admin)
+        db.commit()
+        print("Default admin created.")
+    except Exception as e:
+        print(f"Admin creation failed: {e}")
+    finally:
+        db.close()
+
+
 app = FastAPI(title="Smart Employee Attendance API")
 
 app.add_middleware(
@@ -194,6 +216,7 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup_event():
     """Initialize background tasks on app startup"""
+    create_default_admin()
     try:
         start_background_scheduler()
     except Exception as e:
