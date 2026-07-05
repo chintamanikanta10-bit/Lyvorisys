@@ -2,9 +2,14 @@ import os
 import re
 from datetime import datetime
 from sqlalchemy.orm import Session
-from backend.models.models import SalaryObjection, Employee
-from backend.services.email_service import fetch_unread_emails, mark_email_as_read, send_simple_email
-from backend.database.database import SessionLocal
+try:
+    from backend.models.models import SalaryObjection, Employee
+    from backend.services.email_service import fetch_unread_emails, mark_email_as_read, send_simple_email
+    from backend.database.database import SessionLocal
+except ModuleNotFoundError:
+    from models.models import SalaryObjection, Employee
+    from services.email_service import fetch_unread_emails, mark_email_as_read, send_simple_email
+    from database.database import SessionLocal
 from apscheduler.schedulers.background import BackgroundScheduler
 from dotenv import load_dotenv
 

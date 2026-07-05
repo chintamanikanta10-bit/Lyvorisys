@@ -1,6 +1,9 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import extract, func
-from backend.models.models import Employee, Attendance, LeaveBalance, SalaryRecord, Holiday
+try:
+    from backend.models.models import Employee, Attendance, LeaveBalance, SalaryRecord, Holiday
+except ModuleNotFoundError:
+    from models.models import Employee, Attendance, LeaveBalance, SalaryRecord, Holiday
 import calendar
 
 def calculate_monthly_salary(db: Session, target_month: int, target_year: int):

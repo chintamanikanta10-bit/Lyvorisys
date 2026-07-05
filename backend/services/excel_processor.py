@@ -2,7 +2,10 @@ import pandas as pd
 import os
 from datetime import datetime
 from sqlalchemy.orm import Session
-from backend.models.models import Employee, Attendance, Holiday
+try:
+    from backend.models.models import Employee, Attendance, Holiday
+except ModuleNotFoundError:
+    from models.models import Employee, Attendance, Holiday
 
 def process_attendance_excel(file_path: str, db: Session):
     """

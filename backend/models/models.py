@@ -1,6 +1,9 @@
 from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, Boolean, Time, DateTime
 from sqlalchemy.orm import relationship
-from backend.database.database import Base
+try:
+    from backend.database.database import Base
+except ModuleNotFoundError:
+    from database.database import Base
 from datetime import datetime
 
 class User(Base):
