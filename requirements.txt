@@ -1,1 +1,16 @@
--r backend/requirements.txt
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+alembic
+pandas
+openpyxl
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+pydantic
+pydantic-settings
+python-dotenv
+apscheduler
+imapclient
+email-validator
