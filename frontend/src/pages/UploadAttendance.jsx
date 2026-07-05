@@ -2,8 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { UploadCloud, CheckCircle, AlertCircle, Trash2, Eye, Sparkles } from 'lucide-react';
 import { getAuthHeaders, isHR, parseApiError } from '../auth';
 import AdvancedFilterPanel from '../components/AdvancedFilterPanel';
-
-const API_BASE = 'http://localhost:8001/api';
+import { API_BASE } from '../config';
 
 const UploadAttendance = () => {
   const [files, setFiles] = useState([]);

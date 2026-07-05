@@ -20,8 +20,7 @@ import {
   WalletCards
 } from 'lucide-react';
 import { getAuthHeaders, isHR } from '../auth';
-
-const API_BASE = 'http://localhost:8001/api';
+import { API_BASE } from '../config';
 
 const formatMonth = (month, year) => (
   new Date(Number(year), Number(month) - 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })

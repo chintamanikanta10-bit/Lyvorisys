@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CalendarClock, Sparkles } from 'lucide-react';
 import { getAuthHeaders } from '../auth';
-
-const API_BASE = 'http://localhost:8001/api';
+import { API_BASE } from '../config';
 
 const MyAttendance = () => {
   const [attendance, setAttendance] = useState([]);

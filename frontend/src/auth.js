@@ -1,6 +1,8 @@
+import { API_ORIGIN } from './config';
+
 const CURRENT_USER_KEY = 'attendance_current_user';
 const TOKEN_KEY = 'attendance_token';
-const API_BASE = 'http://localhost:8001';
+const API_BASE = API_ORIGIN;
 
 // Helper to get auth headers. Set json=false for FormData uploads so the
 // browser can set the multipart boundary (do not force application/json).

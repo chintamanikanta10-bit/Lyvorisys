@@ -2,8 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { PlusCircle, X, Trash2, Edit2, Users as UsersIcon, Briefcase } from 'lucide-react';
 import { getAuthHeaders, isHR } from '../auth';
 import AdvancedFilterPanel from '../components/AdvancedFilterPanel';
-
-const API_BASE = 'http://localhost:8001/api';
+import { API_BASE } from '../config';
 
 const Employees = () => {
     const [emps, setEmps] = useState([]);

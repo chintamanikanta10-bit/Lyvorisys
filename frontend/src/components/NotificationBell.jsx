@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Bell, X, Trash2, Loader2 } from 'lucide-react';
 import { getAuthHeaders } from '../auth';
-
-const API_BASE = 'http://localhost:8001/api';
+import { API_BASE } from '../config';
 
 const NotificationBell = () => {
   const [notifications, setNotifications] = useState([]);

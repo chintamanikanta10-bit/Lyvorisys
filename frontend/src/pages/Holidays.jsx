@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar as CalendarIcon, DownloadCloud, Sparkles } from 'lucide-react';
 import { getAuthHeaders, isHR } from '../auth';
-
-const API_BASE = 'http://localhost:8001/api';
+import { API_BASE } from '../config';
 
 const Holidays = () => {
     const [holidays, setHolidays] = useState([]);
