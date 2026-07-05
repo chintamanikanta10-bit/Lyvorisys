@@ -122,9 +122,9 @@ def ensure_user_columns():
             if name not in existing:
                 conn.execute(text(f"ALTER TABLE users ADD COLUMN {name} {definition}"))
 
-ensure_user_columns()
-
 Base.metadata.create_all(bind=engine)
+
+ensure_user_columns()
 
 def ensure_leave_balance_columns():
     new_columns = [
