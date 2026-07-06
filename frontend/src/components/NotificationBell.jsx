@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Bell, X, Trash2, Loader2 } from 'lucide-react';
 import { getAuthHeaders } from '../auth';
 import { API_BASE } from '../config';
@@ -10,6 +11,7 @@ const NotificationBell = () => {
   const [newAlert, setNewAlert] = useState(false);
   const [seenIds, setSeenIds] = useState(new Set());
   const [isDeleting, setIsDeleting] = useState(null);
+  const navigate = useNavigate();
 
   const fetchNotifications = async () => {
     try {
@@ -73,7 +75,7 @@ const NotificationBell = () => {
     <div className="relative">
       {/* Notification Bell Button */}
       <button
-        onClick={() => setShowDropdown(!showDropdown)}
+        onClick={() => navigate('/objections')}
         className="relative p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-full transition"
       >
         <Bell className="h-5 w-5" />
