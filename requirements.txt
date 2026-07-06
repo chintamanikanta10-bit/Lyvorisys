@@ -16,3 +16,4 @@ imapclient
 email-validator
 holidays
 bcrypt
+sib-api-v3-sdk
