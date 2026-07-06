@@ -123,7 +123,7 @@ const Dashboard = () => {
     const uploadDate = latestUpload?.upload_date
       ? new Date(latestUpload.upload_date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
       : 'Not uploaded';
-    const workflowProgress = hasSalaryReport ? 80 : hasUpload ? 65 : 20;
+    const workflowProgress = hasSalaryReport ? 100 : hasUpload ? 65 : 20;
 
     const statCards = [
       { title: 'Employees', value: stats.total_employees, detail: `${stats.total_employees} Active`, icon: Users, color: 'text-blue-600', bg: 'bg-blue-50' },
@@ -135,8 +135,7 @@ const Dashboard = () => {
       { title: 'Attendance Uploaded', description: uploadDate, status: hasUpload ? 'Completed' : 'Requires Attention', icon: UploadCloud },
       { title: 'Attendance Validated', description: hasUpload ? 'No issues detected' : 'Waiting for file', status: hasUpload ? 'Completed' : 'Pending', icon: ShieldCheck },
       { title: 'Payroll Processing', description: hasSalaryReport ? 'Payroll calculated' : 'Ready to calculate', status: hasSalaryReport ? 'Completed' : hasUpload ? 'Processing' : 'Pending', icon: DollarSign },
-      { title: 'Salary Reports', description: hasSalaryReport ? 'Reports available' : 'Not generated', status: hasSalaryReport ? 'Completed' : 'Pending', icon: FileText },
-      { title: 'Month Closed', description: hasSalaryReport ? 'Awaiting final review' : 'Not closed', status: 'Pending', icon: CheckCircle2 }
+      { title: 'Salary Reports', description: hasSalaryReport ? 'Reports available' : 'Not generated', status: hasSalaryReport ? 'Completed' : 'Pending', icon: FileText }
     ];
     const actions = [
       { title: 'Open Attendance Upload', subtitle: 'Navigate to attendance upload page.', path: '/upload', icon: UploadCloud },
