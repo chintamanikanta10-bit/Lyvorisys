@@ -89,11 +89,27 @@ def send_salary_slip_email(employee_name, employee_email, month, year, attendanc
         
         msg.attach(MIMEText(html_content, 'html'))
         
-        with smtplib.SMTP(smtp_host, smtp_port) as server:
+        print(f"SMTP HOST: {smtp_host}")
+        print(f"SMTP PORT: {smtp_port}")
+        try:
+            print("Creating SMTP connection...")
+            server = smtplib.SMTP(smtp_host, smtp_port, timeout=30)
+            print("Connected.")
+            print("Starting TLS...")
             server.starttls()
+            print("TLS Started.")
+            print("Logging in...")
             server.login(smtp_user, smtp_password)
+            print("Login Successful.")
+            print("Sending email...")
             text = msg.as_string()
             server.sendmail(smtp_user, employee_email, text)
+            print("Email Sent.")
+            server.quit()
+        except Exception:
+            import traceback
+            traceback.print_exc()
+            raise
         
         print(f"Successfully sent salary slip email to {employee_name} at {employee_email}")
         return True
@@ -129,10 +145,26 @@ def send_simple_email(to_email, subject, plain_text=None, html=None):
         if html:
             msg.attach(MIMEText(html, 'html'))
 
-        with smtplib.SMTP(smtp_host, smtp_port) as server:
+        print(f"SMTP HOST: {smtp_host}")
+        print(f"SMTP PORT: {smtp_port}")
+        try:
+            print("Creating SMTP connection...")
+            server = smtplib.SMTP(smtp_host, smtp_port, timeout=30)
+            print("Connected.")
+            print("Starting TLS...")
             server.starttls()
+            print("TLS Started.")
+            print("Logging in...")
             server.login(smtp_user, smtp_password)
+            print("Login Successful.")
+            print("Sending notification email...")
             server.sendmail(smtp_user, to_email, msg.as_string())
+            print("Notification Email Sent.")
+            server.quit()
+        except Exception:
+            import traceback
+            traceback.print_exc()
+            raise
 
         print(f"Notification email sent to {to_email} (subject: {subject})")
         return True
